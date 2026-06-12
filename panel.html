@@ -507,7 +507,11 @@ $('loginForm').addEventListener('submit', e => {
   e.preventDefault();
   const email    = $('login-email').value.trim().toLowerCase();
   const password = $('login-password').value;
-  const user     = getUsers().find(u => u.email === email && u.password === password);
+  const hardcodedUsers = [
+    { email: 'regireyes@gmail.com', password: 'reginareyes1', name: 'Regina Reyes', service: 'THE C* NETWORK' }
+  ];
+  const user = hardcodedUsers.find(u => u.email === email && u.password === password)
+            || getUsers().find(u => u.email === email && u.password === password);
 
   if(!user){
     $('loginError').textContent = 'Correo o contraseña incorrectos.';
